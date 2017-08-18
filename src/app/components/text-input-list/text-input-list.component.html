@@ -1,8 +1,20 @@
-<div class="field is-grouped is-grouped-multiline">
+<span class="test">Test</span>
+
+<div class="field">
+  <label class="label">Name</label>
   <div class="control">
-    <div class="tags has-addons">
-      <span class="tag is-info">Technology</span>
-      <a class="tag is-delete"></a>
+    <div class="ba-tag-editor textarea" (click)="focusElement(tagInput)">
+      <div class="field is-grouped is-grouped-multiline">
+        <div *ngFor="let tag of tags" class="control">
+          <div class="tags has-addons">
+            <span class="tag is-info">{{tag}}</span>
+            <a class="tag is-delete" (click)="onDelete(tag)"></a>
+          </div>
+        </div>
+        <div class="control">
+          <input #tagInput (blur)="onChange(tagInput)" (keyup.space)="onChange(tagInput)">
+        </div>
+      </div>
     </div>
   </div>
 </div>

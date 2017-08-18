@@ -1,0 +1,17 @@
+.ba-tag-editor {
+  &.textarea {
+    height: inherit;
+    min-height: inherit;
+    max-height: inherit;
+  }
+
+  .field input {
+    border: none;
+    box-shadow: none !important;
+    outline: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    height: 24px;
+    width: 100%;
+  }
+}

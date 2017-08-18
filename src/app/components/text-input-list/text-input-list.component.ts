@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ControlValueAccessor, ReactiveFormsModule } from '@angular/forms';
-import { TextInputComponent } from '../text-input/text-input.component';
+import { TextInputModule } from '../text-input/text-input.component';
 
 @Component({
   selector: 'ba-text-input-list',
@@ -11,7 +11,7 @@ export class TextInputListComponent implements OnInit, ControlValueAccessor {
 
   private _onChange = Function.prototype;
   private _onTouch = Function.prototype;
-  value: [string];
+  tags: string[] = [];
 
   constructor() { }
 
@@ -20,7 +20,7 @@ export class TextInputListComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: [string]): void {
-    this.value = obj;
+    this.tags = obj;
   }
 
   registerOnChange(fn: any): void {
@@ -31,15 +31,35 @@ export class TextInputListComponent implements OnInit, ControlValueAccessor {
     this._onTouch = fn;
   }
 
-  onChange(): void {
-    this._onChange(this.value);
+  onChange(input): void {
+    if (input.value.trim()) {
+      this.tags.push(input.value);
+      this._onChange(this.tags);
+    }
+
+    input.value = null;
   }
 
+  onDelete(value: string) {
+    this.tags = this.tags.filter(tag => tag !== value);
+  }
+
+  focusElement(element: HTMLElement): void {
+    element.focus();
+  }
 }
 
 @NgModule({
-  imports: [TextInputComponent, ReactiveFormsModule],
-  exports: [TextInputListComponent, TextInputComponent, ReactiveFormsModule],
-  declarations: [TextInputListComponent]
+  imports: [
+    TextInputModule
+  ],
+  exports: [
+    TextInputListComponent,
+    ReactiveFormsModule,
+    TextInputModule
+  ],
+  declarations: [
+    TextInputListComponent
+  ]
 })
 export class TextInputListModule { }

@@ -1,8 +1,9 @@
-import { Component, forwardRef, HostBinding, Input } from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, HostBinding, Input, NgModule } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-text-input',
+  selector: 'ba-text-input',
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss'],
   providers: [
@@ -20,7 +21,7 @@ export class TextInputComponent implements ControlValueAccessor {
   @Input() control: FormControl;
   @Input() id: string;
   @Input() label: string;
-  @Input() required: boolean = true;
+  @Input() required = true;
   @Input() type = 'text';
   @Input() leftIcon;
   @Input() rightIcon;
@@ -49,3 +50,21 @@ export class TextInputComponent implements ControlValueAccessor {
     this._onTouched();
   }
 }
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TextInputComponent
+  ],
+  declarations: [
+    TextInputComponent
+  ]
+})
+export class TextInputModule { }
