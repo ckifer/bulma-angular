@@ -1,8 +1,19 @@
-<ba-tags-input
-  [(ngModel)]="tags"
-  [id]="'test'"
-  [label]="'Test'"></ba-tags-input>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-mobile is-one-third is-offset-one-third">
+        <ba-tags-input
+                [(ngModel)]="tags"
+                [id]="'test'"
+                [label]="'Test'"></ba-tags-input>
 
-<ul *ngIf="tags">
-  <li *ngFor="let tag of tags">{{tag}}</li>
-</ul>
+        <ul *ngIf="tags">
+          <li *ngFor="let tag of tags">{{tag}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
