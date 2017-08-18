@@ -1,0 +1,26 @@
+<label *ngIf="label" for="{{id}}" class="label">{{label}}<span *ngIf="required" class="is-danger"> *</span></label>
+<div class="control" [class.has-icons-left]="leftIcon" [class.has-icons-right]="rightIcon">
+  <input
+    id="{{id}}"
+    class="input"
+    type="{{type}}"
+    placeholder="Enter {{label}}..."
+    [(ngModel)]="value"
+    (keyup)="onChange()"
+    (blur)="onTouch()"
+    [class.is-success]="!control.pristine && control.valid"
+    [class.is-danger]="!control.pristine && control.invalid">
+  <span *ngIf="leftIcon" class="icon is-small is-left">
+    <i class="fa fa-envelope"></i>
+  </span>
+  <span *ngIf="rightIcon && !control.pristine" class="icon is-small is-right">
+    <i *ngIf="control.valid" class="fa fa-check is-success"></i>
+    <i *ngIf="control.invalid" class="fa fa-exclamation-triangle is-danger"></i>
+  </span>
+</div>
+
+<article *ngIf="!control.pristine && control.invalid" style="margin-top: 8px;" class="message is-danger">
+  <div class="message-body">
+    This is a test.
+  </div>
+</article>
