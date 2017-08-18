@@ -1,9 +1,7 @@
-<span class="test">Test</span>
-
 <div class="field">
-  <label class="label">Name</label>
+  <label for="{{id}}" class="label">{{label}}</label>
   <div class="control">
-    <div class="ba-tag-editor textarea" (click)="focusElement(tagInput)">
+    <div class="ba-tag-editor textarea" (click)="enterFocus(tagInput)" [class.is-primary]="focused">
       <div class="field is-grouped is-grouped-multiline">
         <div *ngFor="let tag of tags" class="control">
           <div class="tags has-addons">
@@ -12,7 +10,7 @@
           </div>
         </div>
         <div class="control">
-          <input #tagInput (blur)="onChange(tagInput)" (keyup.space)="onChange(tagInput)">
+          <input id="{{id}}" #tagInput [(ngModel)]="input" (blur)="leaveFocus()" (keydown.space)="spacePressed($event)" (keydown.backspace)="backspacePressed()">
         </div>
       </div>
     </div>

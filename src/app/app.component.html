@@ -1,1 +1,8 @@
-<ba-text-input-list></ba-text-input-list>
+<ba-tags-input
+  [(ngModel)]="tags"
+  [id]="'test'"
+  [label]="'Test'"></ba-tags-input>
+
+<ul *ngIf="tags">
+  <li *ngFor="let tag of tags">{{tag}}</li>
+</ul>

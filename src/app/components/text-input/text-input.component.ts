@@ -49,6 +49,7 @@ export class TextInputComponent implements ControlValueAccessor {
   onTouch(): void {
     this._onTouched();
   }
+
 }
 
 @NgModule({

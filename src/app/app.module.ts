@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TextInputListModule } from './components/text-input-list/text-input-list.component';
+import { TagsInputModule } from './components/tags-input/tags-input.component';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { TextInputListModule } from './components/text-input-list/text-input-lis
   ],
   imports: [
     BrowserModule,
-    TextInputListModule
+    TagsInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
