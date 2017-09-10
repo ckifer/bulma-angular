@@ -33,11 +33,7 @@ export class DropdownComponent {
 
 
   toggleActive(){
-    if(this.isActive){
-      this.isActive = false;
-    } else if (!this.isActive){
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 
 }
